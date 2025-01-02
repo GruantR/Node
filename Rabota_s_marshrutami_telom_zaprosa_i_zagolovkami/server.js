@@ -4,6 +4,12 @@ require('dotenv').config();
 
 app.use(express.json());
 
+// Middleware для Логирования 
+function logger(req, res, next) {
+    console.log(`Запрос на ${req.url}`);
+    next();
+}
+app.use(logger);
 
 //  Создать маршрут для обработки HTTP GET-запроса по пути **`/api/hello`**, который возвращает простое сообщение `"Привет, Redev!"`.
 app.get('/api/hello', (req,res)=>{
@@ -18,6 +24,12 @@ app.post('/api/echo', (req,res)=>{
 
 
 // Создание (Create)
+// {
+//     "id":"1",
+//     "username": "Masha",
+//     "email":"ruslanusrulit@gmail.com",
+//     "password":"Qwe123"
+// }
 let userList = [];
 class Users {
     constructor(id,username,email,password) {
