@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
 
 app.use(express.json());
 
@@ -108,7 +109,8 @@ else {
 
 
 
-const PORT = 3000
+
+const PORT = process.env.PORT
 app.listen(PORT,()=>{
     console.log(`Запущен сервер на http://localhost:${PORT}`);
     
